@@ -43,6 +43,7 @@
 #define PWM_ENABLE_MUX		0x0002	/* IDIS | PTD | DIS | M2 */
 
 #define CLK_32K_FREQ	32768
+#define CLK_13K_FREQ	13312
 #define CLK_SYS_FREQ	13000000
 
 #define GPTIMER8		0x4903E000
@@ -96,6 +97,23 @@
 #define GPT_TCLR_CAPT_MODE      (1 << 13)	/* capture mode config */
 #define GPT_TCLR_GPO_CFG        (1 << 14)	/* pwm or capture mode */
 
+/* Ioctl definitions */
+
+#define PWM_IOC_MAGIC 0x00
+
+#define PWM_SET_DUTYCYCLE _IOW(PWM_IOC_MAGIC , 1, int)
+#define PWM_GET_DUTYCYCLE _IOW(PWM_IOC_MAGIC , 2, int)
+#define PWM_SET_FREQUENCY _IOW(PWM_IOC_MAGIC , 3, int)
+#define PWM_GET_FREQUENCY _IOW(PWM_IOC_MAGIC , 4, int)
+#define PWM_ON _IO(PWM_IOC_MAGIC , 5)
+#define PWM_OFF _IO(PWM_IOC_MAGIC , 6)
+#define PWM_SET_POLARITY _IOW(PWM_IOC_MAGIC , 7, int)
+#define PWM_SET_CLK _IOW(PWM_IOC_MAGIC , 8, int)
+#define PWM_SET_PRE _IOW(PWM_IOC_MAGIC , 9, int)
+#define PWM_PLUS_DUTYCYCLE _IOW(PWM_IOC_MAGIC , 10, int)
+#define PWM_MINUS_DUTYCYCLE _IOW(PWM_IOC_MAGIC , 11, int)
+
+#define PWM_IOC_MAXNR 11
 
 #endif /* ifndef PWM_H */
 
